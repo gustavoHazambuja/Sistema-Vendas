@@ -3,6 +3,7 @@ package sistema_vendas.domain.entities;
 import java.util.ArrayList;
 import java.util.List;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -24,7 +25,10 @@ public class Produto {
     
     @Id
     private int codigo;
+
+    @Column(columnDefinition = "TEXT")
     private String descricao;
+    
     private int quantidadeEstoque;
     private double precoUnitario;
 

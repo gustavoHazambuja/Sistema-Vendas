@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.Id;
 
 @Entity
 @Table(name = "tb_venda")
@@ -16,7 +17,8 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Venda {
-    
+
+    @Id
     private int id;
 
     @ManyToOne
@@ -24,6 +26,10 @@ public class Venda {
     private Usuario usuario;
 
     @ManyToOne
-    @JoinColumn(name = "int_produto")
+    @JoinColumn(name = "id_produto")
     private Produto produto;
+
+    private int quantidade;
+
+    private double valorFinal;
 }

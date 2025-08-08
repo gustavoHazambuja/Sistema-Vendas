@@ -49,7 +49,7 @@ public class VendaService {
         return vendaContract.realizarVenda(usuario, produto, quantidadeDesejada);
     }
 
-    public static double calcularValorFinal(Usuario usuario,Produto produto, int quantidadeDesejada){
+    public double calcularValorFinal(Usuario usuario,Produto produto, int quantidadeDesejada){
 
         double valorBase = produto.getPrecoUnitario();
         CategoriaProduto categoria = produto.getCategoria();

@@ -35,6 +35,14 @@ public class Produto {
     @Enumerated(EnumType.STRING)
     private CategoriaProduto categoria;
 
+    public Produto(int codigo, String descricao,int quantidadeEstoque, double precoUnitario, CategoriaProduto categoria){
+        this.codigo = codigo;
+        this.descricao = descricao;
+        this.quantidadeEstoque = quantidadeEstoque;
+        this.precoUnitario = precoUnitario;
+        this.categoria = categoria;
+    }
+
     @OneToMany(mappedBy = "produto")
     private List<Venda> vendas = new ArrayList<>();
 }

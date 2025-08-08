@@ -34,6 +34,13 @@ public class Usuario {
 
     private int numDependentes;
 
+    public Usuario(int id, String nome, LocalDate dataNascimento, int numDependentes){
+        this.id = id;
+        this.nome = nome;
+        this.dataNascimento = dataNascimento;
+        this.numDependentes = numDependentes;
+    }
+
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY)
     private List<Venda> vendas = new ArrayList<>();
 

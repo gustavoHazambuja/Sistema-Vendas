@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
@@ -30,8 +31,10 @@ public class Usuario {
     private String nome;
 
     @JsonFormat(pattern = "dd/MM/yyyy")
+    @Column(name = "data_nascimento")
     private LocalDate dataNascimento;
 
+    @Column(name = "num_dependentes")
     private int numDependentes;
 
     public Usuario(int id, String nome, LocalDate dataNascimento, int numDependentes){

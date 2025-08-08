@@ -29,7 +29,10 @@ public class Produto {
     @Column(columnDefinition = "TEXT")
     private String descricao;
     
+    @Column(name = "quantidade_estoque")
     private int quantidadeEstoque;
+
+    @Column(name = "preco_unitario")
     private double precoUnitario;
 
     @Enumerated(EnumType.STRING)

@@ -1,6 +1,7 @@
 package sistema_vendas.domain.entities;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
@@ -17,6 +18,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Venda {
     
+    @Id
     private int id;
 
     @ManyToOne

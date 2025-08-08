@@ -6,5 +6,5 @@ import sistema_vendas.domain.entities.Usuario;
 
 public interface UsuarioJPARep extends JpaRepository<Usuario, Integer> {
     
-        boolean existsById(int id);
+    boolean existsById(int id);
 }

@@ -4,9 +4,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import sistema_vendas.domain.entities.Produto;
+import sistema_vendas.domain.entities.Venda;
 
-public interface ProdutoJPARep extends JpaRepository<Produto,Integer> {
+public interface VendaJPARep extends JpaRepository<Venda, Integer> {
     
-    boolean existsByCodigo(int codigo);
+    boolean existsById(int id);
 }

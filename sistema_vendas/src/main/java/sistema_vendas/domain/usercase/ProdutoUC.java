@@ -41,7 +41,7 @@ public class ProdutoUC {
             dto.getDescricao(),
             dto.getQuantidadeEstoque(),
             dto.getPrecoUnitario(),
-            dto.getCategoriaProduto()
+            dto.getCategoria()
         );
     }
 }

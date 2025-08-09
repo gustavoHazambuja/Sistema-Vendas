@@ -30,7 +30,6 @@ public class Usuario {
     private int id;
     private String nome;
 
-    @JsonFormat(pattern = "dd/MM/yyyy")
     @Column(name = "data_nascimento")
     private LocalDate dataNascimento;
 

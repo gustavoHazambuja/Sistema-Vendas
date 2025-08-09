@@ -26,7 +26,7 @@ public class ProdutoController {
     private ProdutoUC produtoUC;
 
 
-    @GetMapping(value = "/validaProduto/{id}")
+    @GetMapping(value = "/validaProduto/{codigo}")
     public boolean validaProduto(@PathVariable int codigo){
         return produtoUC.validaProduto(codigo);
     }

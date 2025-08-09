@@ -14,15 +14,17 @@ import sistema_vendas.domain.entities.Produto;
 public class ProdutoResumidoDTO {
     
     private int codigo;
+    private String descricao;
     private int quantidadeEstoque;
     private double precoUnitario;
-    private CategoriaProduto categoriaProduto;
+    private CategoriaProduto categoria;
 
 
 
     public static ProdutoResumidoDTO fromModel(Produto produto){
         return new ProdutoResumidoDTO(
             produto.getCodigo(),
+            produto.getDescricao(),
             produto.getQuantidadeEstoque(),
             produto.getPrecoUnitario(),
             produto.getCategoria()

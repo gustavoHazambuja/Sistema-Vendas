@@ -1,5 +1,7 @@
 package sistema_vendas.domain.dtos;
 
+import java.time.LocalDate;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,6 +16,7 @@ public class UsuarioResumidoDTO {
     
     private int id;
     private String nome;
+    private LocalDate dataNascimento;
     private int numDependentes;
 
 
@@ -21,6 +24,7 @@ public class UsuarioResumidoDTO {
         return new UsuarioResumidoDTO(
             usuario.getId(),
             usuario.getNome(),
+            usuario.getDataNascimento(),
             usuario.getNumDependentes()
         );
     } 

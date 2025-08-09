@@ -7,8 +7,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import sistema_vendas.domain.dtos.ProdutoCadastroDTO;
@@ -16,8 +18,8 @@ import sistema_vendas.domain.dtos.UsuarioCadastroDTO;
 import sistema_vendas.domain.dtos.VendaResumidoDTO;
 import sistema_vendas.domain.usercase.VendaUC;
 
-@RequestMapping
-@RestController(value = "/vendas")
+@RestController
+@RequestMapping(value = "/vendas")
 public class VendaController {
     
     @Autowired
@@ -38,13 +40,13 @@ public class VendaController {
         return new ResponseEntity<>(result,HttpStatus.OK);
     }
 
-    @GetMapping(value = "/realizarVenda/{quantidadeDesejada}")
-    public boolean realizarVenda(@RequestBody UsuarioCadastroDTO usuarioCadastroDTO, @RequestBody ProdutoCadastroDTO produtoCadastroDTO, @PathVariable int quantidadeDesejada){
-        return vendaUC.realizarVenda(usuarioCadastroDTO, produtoCadastroDTO, quantidadeDesejada);
+    @PostMapping(value = "/realizarVenda")
+    public boolean realizarVenda(@RequestBody VendaResumidoDTO vendaResumidoDTO, @RequestParam int quantidadeDesejada){
+        return vendaUC.realizarVenda(vendaResumidoDTO, quantidadeDesejada);
     }
 
-    @GetMapping(value = "/valorFinal/{quantidadeDesejada}")
-    public double calcularValorFinal(@RequestBody UsuarioCadastroDTO usuarioCadastroDTO, @RequestBody ProdutoCadastroDTO produtoCadastroDTO, int quantidadeDesejada){
-        return vendaUC.calcularValorFinal(usuarioCadastroDTO, produtoCadastroDTO, quantidadeDesejada);
+    @PostMapping(value = "/valorFinal")
+    public double calcularValorFinal(@RequestBody VendaResumidoDTO vendaResumidoDTO, @RequestParam int quantidadeDesejada){
+        return vendaUC.calcularValorFinal(vendaResumidoDTO,quantidadeDesejada);
     }
 }

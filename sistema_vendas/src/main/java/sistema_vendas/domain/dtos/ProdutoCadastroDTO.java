@@ -17,5 +17,5 @@ public class ProdutoCadastroDTO {
     private String descricao;
     private int quantidadeEstoque;
     private double precoUnitario;
-    private CategoriaProduto categoriaProduto;
+    private CategoriaProduto categoria;
 }

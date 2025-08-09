@@ -26,7 +26,6 @@ public class Produto {
     @Id
     private int codigo;
 
-    @Column(columnDefinition = "TEXT")
     private String descricao;
     
     @Column(name = "quantidade_estoque")

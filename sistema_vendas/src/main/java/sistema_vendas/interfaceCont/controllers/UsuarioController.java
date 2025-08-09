@@ -18,15 +18,15 @@ import sistema_vendas.domain.dtos.UsuarioCadastroDTO;
 import sistema_vendas.domain.dtos.UsuarioResumidoDTO;
 import sistema_vendas.domain.usercase.UsuarioUC;
 
-@RequestMapping
-@RestController(value = "/usuarios")
+@RestController
+@RequestMapping(value = "/usuarios")
 public class UsuarioController {
     
     @Autowired
     private UsuarioUC usuarioUC;
 
 
-    @GetMapping(value = "/validaUsuario{id}")
+    @GetMapping(value = "/validaUsuario/{id}")
     public boolean validaUsuario(@PathVariable int id){
         return usuarioUC.validaUsuario(id);
     }

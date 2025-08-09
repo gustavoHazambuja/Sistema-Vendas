@@ -30,20 +30,12 @@ public class VendaRepository implements VendaContract {
     }
 
     @Override
-    public boolean realizarVenda(Usuario usuario, Produto produto, int quantidadeDesejada){
-            try{
-                Venda venda = new Venda();
+    public boolean realizarVenda(Venda venda, int quantidadeDesejada){
+           if(venda == null){
+            return false;
+           }
 
-                venda.setUsuario(usuario);
-                venda.setProduto(produto);
-
-                vendaJPARep.save(venda);
-                return true;
-
-            }catch(Exception e){
-                e.printStackTrace();
-                return false;
-            }
+           return vendaJPARep.save(venda) != null;
     }
 
 }

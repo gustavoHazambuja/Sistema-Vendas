@@ -5,11 +5,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
-import sistema_vendas.domain.dtos.ProdutoCadastroDTO;
-import sistema_vendas.domain.dtos.UsuarioCadastroDTO;
 import sistema_vendas.domain.dtos.VendaResumidoDTO;
 import sistema_vendas.domain.entities.Produto;
 import sistema_vendas.domain.entities.Usuario;
+import sistema_vendas.domain.entities.Venda;
 import sistema_vendas.domain.services.VendaService;
 
 @Component
@@ -28,40 +27,37 @@ public class VendaUC {
             .map(VendaResumidoDTO::fromModel);
     }
 
-    public boolean realizarVenda(UsuarioCadastroDTO usuarioCadastroDTO, ProdutoCadastroDTO produtoCadastroDTO, int quantidadeDesejada){
-        Usuario usuario = toModel(usuarioCadastroDTO);
-        Produto produto = toModel(produtoCadastroDTO);
+    public boolean realizarVenda(VendaResumidoDTO vendaResumidoDTO, int quantidadeDesejada){
+        Venda venda = toModel(vendaResumidoDTO);
 
-        return vendaService.realizarVenda(usuario, produto, quantidadeDesejada);
+        return vendaService.realizarVenda(venda,quantidadeDesejada);
     }
 
-    public double calcularValorFinal(UsuarioCadastroDTO usuarioCadastroDTO, ProdutoCadastroDTO produtoCadastroDTO, int quantidadeDesejada){
-        Usuario usuario = toModel(usuarioCadastroDTO);
-        Produto produto = toModel(produtoCadastroDTO);
+    public double calcularValorFinal(VendaResumidoDTO vendaResumidoDTO, int quantidadeDesejada){
+        Venda venda = toModel(vendaResumidoDTO);
 
-        return vendaService.calcularValorFinal(usuario, produto, quantidadeDesejada);
+        return vendaService.calcularValorFinal(venda, quantidadeDesejada);
     }
 
 
-
-
-
-     private Usuario toModel(UsuarioCadastroDTO dto){
-        return new Usuario(
-            dto.getId(),
-            dto.getNome(),
-            dto.getDataNascimento(),
-            dto.getNumDependentes()
+    private Venda toModel(VendaResumidoDTO dto){
+       Usuario usuario = new Usuario(
+            dto.getUsuarioResumidoDTO().getId(),
+            dto.getUsuarioResumidoDTO().getNome(),
+            dto.getUsuarioResumidoDTO().getDataNascimento(),
+            dto.getUsuarioResumidoDTO().getNumDependentes()
         );
+
+      Produto produto = new Produto(
+            dto.getProdutoResumidoDTO().getCodigo(),
+            dto.getProdutoResumidoDTO().getDescricao(),
+            dto.getProdutoResumidoDTO().getQuantidadeEstoque(),
+            dto.getProdutoResumidoDTO().getPrecoUnitario(),
+            dto.getProdutoResumidoDTO().getCategoria()
+      );
+
+      return new Venda(dto.getId(), usuario, produto);
     }
 
-      private Produto toModel(ProdutoCadastroDTO dto){
-        return new Produto(
-            dto.getCodigo(),
-            dto.getDescricao(),
-            dto.getQuantidadeEstoque(),
-            dto.getPrecoUnitario(),
-            dto.getCategoriaProduto()
-        );
-    }
+     
 }
